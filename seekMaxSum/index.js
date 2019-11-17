@@ -12,8 +12,8 @@ function maxSum(k) {
   let sum = 0;
   let cache = 0;
 
-  for(i=0; i<len-1; i++) {
-    for(j=i+1; j<len; j++) {
+  for(let i=0; i<len-1; i++) {
+    for(let j=i+1; j<len; j++) {
       cache = A[i] + A[j];
       if( cache < k && cache > sum) {
         sum = cache;

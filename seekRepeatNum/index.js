@@ -12,8 +12,9 @@
 // 请输入一个数组
 function seekRepeatNum(arr) {
   if(!Array.isArray(arr)) return;
-  obj={};
-  for(i=0; i<arr.length; i++) {
+  let obj={};
+  let num = 0;
+  for(let i=0; i<arr.length; i++) {
     num = arr[i];
     if(!obj[num]) {
       obj[num] = num;
