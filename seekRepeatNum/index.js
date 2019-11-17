@@ -9,8 +9,9 @@
   将数组转存为对象，以数组的值作为对象的key，循环整个数组，如果存在相同的key，则说明该值是重复值。
 */
 
-function seekRepeatNum() {
-  arr=[1,3,4,2,2];
+// 请输入一个数组
+function seekRepeatNum(arr) {
+  if(!Array.isArray(arr)) return;
   obj={};
   for(i=0; i<arr.length; i++) {
     num = arr[i];
