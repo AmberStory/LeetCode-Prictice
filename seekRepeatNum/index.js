@@ -8,7 +8,6 @@
   思路：
   将数组转存为对象，以数组的值作为对象的key，循环整个数组，如果存在相同的key，则说明该值是重复值。
 */
-
 // 请输入一个数组
 function seekRepeatNum(arr) {
   if(!Array.isArray(arr)) return;
@@ -23,4 +22,28 @@ function seekRepeatNum(arr) {
       return num;
     }
   };
+}
+
+
+/*
+  思路：
+  二分查找原则：1到n之间有n+1个数，那么我们取n的中间值m，将n+1个数与m进行比较，如果小于等于m的数大于m个，说明重复的数在[1, m]之间，否则在[m+1, n]之间，然后反复这种思路进行查找即可。
+*/
+function pickRepeatNum(arr) {
+  const numLength = arr.length;
+  let x = 1;
+  let y = numLength-1;
+  while(x < y) {
+    let sum = 0;
+    // 当取数组中间位置的数的时候，可以使用(x+y)/2的方式，但是更推荐使用x+(y-x)/2，避免出现(x+y)会超出int类型表示的最大值，导致整形溢出的问题。
+    let m = x+parseInt((y-x)/2, 10);
+    for(let i = 0; i<numLength; i++) {
+      if(arr[i] <= m) {
+        sum++;
+      }
+    }
+    if(sum > m) y = m;
+    else x = m+1;
+  }
+  return x;
 }
